@@ -27,12 +27,12 @@ function onYouTubeIframeAPIReady() {
 }
 
 function onPlayerReady(event) {
-    const delay = ms => new Promise(res => setTimeout(res, ms));
     event.target.playVideo();
     if (player.getPlayerState() != 1) {
         event.target.mute();
         event.target.playVideo();
-        await delay(5000);
-        event.target.unmute();
+        setTimeout(function () {
+            event.target.unmute();
+        }, 1000);
     }
 }
